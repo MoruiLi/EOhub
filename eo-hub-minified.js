@@ -557,7 +557,7 @@
                 if (LC_API.agents_are_available()) {
                     jQuery('#eo-subscribe').hide();
                 } else {
-                    jQuery('#ft').before('<a class="hide-for-small" target="_blank" href="https://surveys.eonetwork.org/view.php?id=1009874"><img id="live-chat-notice" width="82" src="https://eonetwork.org/PublishingImages/live-chat-offline.png"></a>');
+                    jQuery('#ft').before('<a class="hide-for-small" target="_blank" href="https://forms.monday.com/forms/e8c3fe8add707b272f27ec171e1e4f58?r=use1"><img id="live-chat-notice" width="82" src="https://eonetwork.org/PublishingImages/live-chat-offline.png"></a>');
                 }
             };
 
