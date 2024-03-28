@@ -485,7 +485,7 @@
             });
         } else {
             gtag('config', 'G-MBQNV60Y14');
-        } */
+        } 
         //old method
         /* new method adding additional demographics
         if (_user.Chapter.length > 0){
@@ -497,7 +497,7 @@
             })
         }
         */
-    }
+    } */
 
 /*
     t("create", "UA-17922425-4", "auto", {
