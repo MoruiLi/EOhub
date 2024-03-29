@@ -460,10 +460,10 @@
 */
 
     /*===============================================================================
-    googleAnalytics()
+    googleAnalytics() - NOT IN USE. THIS HAS BEEN ADDED TO HUB HEADER
     retrieve data about current user and save in local storage
     *==============================================================================*/
- /*   function googleAnalytics() {
+    function googleAnalytics() {  
         const debugMode = false;
         const _user = JSON.parse(localStorage.getItem("eoWebUser"));
 
@@ -473,18 +473,18 @@
         }
 
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+   //     function gtag(){dataLayer.push(arguments);}
+   //    gtag('js', new Date());
 
         const _selectedPartyId = JSON.parse(document.getElementById("__ClientContext").value).selectedPartyId;
         const _guestImisId = '217';
         
         if (_selectedPartyId != _guestImisId){
-            gtag('config', 'G-MBQNV60Y14', {
-                'user_id': _selectedPartyId,
-            });
+    //        gtag('config', 'G-MBQNV60Y14', {
+    //            'user_id': _selectedPartyId,
+    //        });
         } else {
-            gtag('config', 'G-MBQNV60Y14');
+    //       gtag('config', 'G-MBQNV60Y14');
         } 
         //old method
         /* new method adding additional demographics
@@ -497,7 +497,7 @@
             })
         }
         */
-    } */
+    } 
 
 /*
     t("create", "UA-17922425-4", "auto", {
