@@ -460,10 +460,10 @@
 */
 
     /*===============================================================================
-    googleAnalytics()
+    googleAnalytics() - NOT IN USE. THIS HAS BEEN ADDED TO HUB HEADER
     retrieve data about current user and save in local storage
     *==============================================================================*/
- /*   function googleAnalytics() {
+    function googleAnalytics() {  
         const debugMode = false;
         const _user = JSON.parse(localStorage.getItem("eoWebUser"));
 
@@ -473,18 +473,18 @@
         }
 
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+   //     function gtag(){dataLayer.push(arguments);}
+   //    gtag('js', new Date());
 
         const _selectedPartyId = JSON.parse(document.getElementById("__ClientContext").value).selectedPartyId;
         const _guestImisId = '217';
         
         if (_selectedPartyId != _guestImisId){
-            gtag('config', 'G-MBQNV60Y14', {
-                'user_id': _selectedPartyId,
-            });
+    //        gtag('config', 'G-MBQNV60Y14', {
+    //            'user_id': _selectedPartyId,
+    //        });
         } else {
-            gtag('config', 'G-MBQNV60Y14');
+    //       gtag('config', 'G-MBQNV60Y14');
         } 
         //old method
         /* new method adding additional demographics
@@ -497,7 +497,7 @@
             })
         }
         */
-    } */
+    } 
 
 /*
     t("create", "UA-17922425-4", "auto", {
@@ -551,15 +551,55 @@
                 var s = document.getElementsByTagName('script')[0];
                 s.parentNode.insertBefore(lc, s);
             })();
+			
+		
+	    const _mbrID = JSON.parse(document.getElementById("__ClientContext").value).selectedPartyId;
+		if( (_mbrID != 'undefined' && _mbrID  != '217')){
+			
+		 var waitForLC = setInterval(function () {
+				if (window.LC_API === undefined) {
+			return;
+			}
+			clearInterval(waitForLC);
+			
+		
+			
+			var showUnavailableStatus = function(show){
+				var footerDiv = document.getElementById('ft');
+				var offlineIcon = document.createElement("div");
+				offlineIcon.innerHTML = '<a class="hide-for-small" target="_blank" href="https://forms.monday.com/forms/e8c3fe8add707b272f27ec171e1e4f58?r=use1"><img id="live-chat-notice" width="82" src="https://eonetwork.org/PublishingImages/live-chat-offline.png"></a>';
+			    offlineIcon.id = "hide-for-small";
+				document.getElementById("ctl01_masterWrapper").insertBefore(offlineIcon,footerDiv );
+				var style = show ? "block" : "none";
+				offlineIcon.style.display = style;
+				
+			}
+			LC_API.on_after_load = function() {
+				if (LC_API.agents_are_available()) {
+					console.log('chat agents_are_available');
+
+					// showUnavailableStatus(false);
+				} else {
+					console.log('chat agents_offline');
+					 showUnavailableStatus(true);
+				}
+			};
+			LC_API.on_chat_state_changed = function(data) {
+					showUnavailableStatus(data.state==="offline");
+			};
+		 }, 100);	
+				
+		}		
+								
     
-            var LC_API = LC_API || {};
+         /*   var LC_API = LC_API || {};
+			console.log('LC_API.agents_are_available'+LC_API.agents_are_available());
             LC_API.on_after_load = function() {
                 if (LC_API.agents_are_available()) {
-                    jQuery('#eo-subscribe').hide();
-                } else {
+                    console.log('LC_API.agents_are_available.ifStatement');
                     jQuery('#ft').before('<a class="hide-for-small" target="_blank" href="https://forms.monday.com/forms/e8c3fe8add707b272f27ec171e1e4f58?r=use1"><img id="live-chat-notice" width="82" src="https://eonetwork.org/PublishingImages/live-chat-offline.png"></a>');
                 }
-            };
+            }; */
 
         }
     }
@@ -3413,4 +3453,3 @@ function refreshGrid(_gridId) {
         style.rel = 'stylesheet';
         head.appendChild(style);
     }
-
